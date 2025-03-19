@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+--grey: #686f69;
+--innerGreen: #1cd947;
+--darkGreen: #0e5e18;
+--back: #08330f;
+}
+
+/* Centraliza todo o Omnitrix no relógio */
+.container {
+  width: 360px;
+  height: 360px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: black; */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.frame {
+  width: 360px;
+  height: 360px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Parte principal do Omnitrix */
+.dial {
+  width: 360px;
+  height: 360px;
+  background-color: var(--innerGreen);
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: inset 4px 4px 15px 3px rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring {
+  width: 312px;
+  height: 312px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: var(--innerGreen);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+/* Partes laterais */
+.des-lft,
+.des-rht {
+  width: 125px;
+  height: 210px;
+  background-color: black;
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
+  position: absolute;
+  border-radius: 70% 0 0 70%;
+}
+
+.active{
+  background-color: var(--innerGreen);
+}
+
+.deactive{
+  display: none;
+}
+
+.des-lft {
+  left: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.des-rht {
+  right: -25px;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Alien no centro */
+.alien {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagem do alien */
+.alien img {
+  width: 130px;
+  height: 270px;
+  object-fit: contain;
+  display: none;
+}
