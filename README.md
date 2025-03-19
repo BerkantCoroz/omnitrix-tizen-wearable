@@ -23,7 +23,7 @@ Este é um projeto que traz o icônico **Omnitrix** para o **Tizen OS**, recrian
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/omnitrix-tizen-wearable.git
+   git clone https://github.com/MrPowerUp82/omnitrix-tizen-wearable.git
    ```
 2. Abra o **Tizen Studio** e importe o projeto.
 3. Compile e instale no seu dispositivo Tizen.
@@ -49,4 +49,4 @@ Sinta-se à vontade para abrir **issues** ou enviar **pull requests** com melhor
 Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
-**Desenvolvido por [Seu Nome](https://github.com/MrPowerUp82).** 👾
+**Desenvolvido por [MrPowerUp82](https://github.com/MrPowerUp82).** 👾
