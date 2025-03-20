@@ -46,7 +46,7 @@ Sinta-se à vontade para abrir **issues** ou enviar **pull requests** com melhor
 
 ## 📜 Licença
 
-Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
 ---
 **Desenvolvido por [MrPowerUp82](https://github.com/MrPowerUp82).** 👾
