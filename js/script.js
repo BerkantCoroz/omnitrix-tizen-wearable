@@ -17,23 +17,29 @@ document.querySelector('.alien').addEventListener('click', function(event){
     if (mode == 1){
         alienEl.style.display = 'block'
         mode = 2
-
+        document.getElementById('ox_activate').play()
+        document.getElementById('ox_activating').play()
         document.querySelector('.des-lft').classList.add('deactive')
         document.querySelector('.des-rht').classList.add('deactive')
+        document.querySelector('.alien').classList.add('active')
     }else{
         alienEl.style.display = 'none'
         index = 0
         mode = 1
+        document.getElementById('ox_transformation').play()
         document.querySelector('.des-lft').classList.remove('deactive')
         document.querySelector('.des-rht').classList.remove('deactive')
+        document.querySelector('.alien').classList.remove('active')
     }
 })
 
 document.addEventListener('rotarydetent', function(event) {
     if (mode == 2){
         if (event.detail.direction === 'CW') { 
+            document.getElementById('RCCW').play()
             index = (index + 1) % aliens.length;
         } else if (event.detail.direction === 'CCW') {
+            document.getElementById('RCCW').play()
             index = (index - 1 + aliens.length) % aliens.length;
         }
         alienEl.setAttribute('src', `imgs/${aliens[index]}`)
@@ -56,10 +62,12 @@ function handleSwipe() {
     let diffX = endX - startX;
     
     if (diffX > 50) {
-        console.log("➡️ Swipe para a direita");
+        // console.log("➡️ Swipe para a direita");
+        document.getElementById('RCCW').play()
         index = (index + 1) % aliens.length;
     } else if (diffX < -50) {
-        console.log("⬅️ Swipe para a esquerda");
+        // console.log("⬅️ Swipe para a esquerda");
+        document.getElementById('RCCW').play()
         index = (index - 1 + aliens.length) % aliens.length;
     }
 
