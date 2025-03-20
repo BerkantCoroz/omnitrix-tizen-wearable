@@ -1,6 +1,8 @@
 const aliens = [
     'swampfire.png',
-    'bigchill.png'
+    'bigchill.png',
+    'humungousaur.webp',
+    'alienx.webp'
 ]
 
 const alienEl = document.getElementById("aliens")

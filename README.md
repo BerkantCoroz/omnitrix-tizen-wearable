@@ -1,6 +1,6 @@
 # 🕒 Omnitrix para Tizen OS
 
-Este é um projeto que traz o icônico **Omnitrix** para o **Tizen OS**, recriando sua interface, animações e interações. Inspirado no relógio do Ben 10, este projeto foi desenvolvido para rodar em dispositivos com Tizen, proporcionando uma experiência única.
+Este é um projeto que traz o icônico **Omnitrix** para o **Tizen OS**, recriando sua interface, animações e interações. Inspirado no relógio do Ben 10, este projeto foi desenvolvido para rodar em dispositivos com Tizen 5.5, proporcionando uma experiência única.
 
 ## 🚀 Recursos
 
