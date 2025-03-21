@@ -1,14 +1,54 @@
 const aliens = [
-    'swampfire.png',
-    'bigchill.png',
-    'humungousaur.png',
-    'alienx.png',
-    'heatblast.png',
-    'fourarms.png',
-    'diamondhead.png',
-    'jetray.png',
-    'waybig.png',
-    'chromastone.png'
+    {
+        name: 'swampfire',
+        src: 'swampfire.png',
+        scale: 1.0
+    },
+    {
+        name: 'bigchill',
+        src: 'bigchill.png',
+        scale: 1.0
+    },
+    {
+        name: 'humungousaur',
+        src: 'humungousaur.png',
+        scale: 1.3
+    },
+    {
+        name: 'alienx',
+        src: 'alienx.png',
+        scale: 1.0
+    },
+    {
+        name: 'heatblast',
+        src: 'heatblast.png',
+        scale: 1.0
+    },
+    {
+        name: 'fourarms',
+        src: 'fourarms.png',
+        scale: 1.0
+    },
+    {
+        name: 'diamondhead',
+        src: 'diamondhead.png',
+        scale: 1.0
+    },
+    {
+        name: 'jetray',
+        src: 'jetray.png',
+        scale: 1.3
+    },
+    {
+        name: 'waybig',
+        src: 'waybig.png',
+        scale: 1.0
+    },
+    {
+        name: 'chromastone',
+        src: 'chromastone.png',
+        scale: 1.0
+    }
 ]
 
 const alienEl = document.getElementById("aliens")
@@ -39,6 +79,20 @@ document.querySelector('.hologram').addEventListener('click', function(event){
     document.querySelector('.hologram').style.display='none'
 })
 
+document.addEventListener('keydown', function(event) {
+    if (mode == 2){
+        if (event.key === 'ArrowRight') {
+            document.getElementById('RCCW').play()
+            index = (index + 1) % aliens.length;
+        } else if (event.key === 'ArrowLeft') {
+            document.getElementById('RCCW').play()
+            index = (index - 1 + aliens.length) % aliens.length;
+        }
+        alienEl.src = `imgs/${aliens[index].src}`
+        alienEl.style.scale = aliens[index].scale
+    }
+})
+
 document.addEventListener('rotarydetent', function(event) {
     if (mode == 2){
         if (event.detail.direction === 'CW') { 
@@ -48,7 +102,8 @@ document.addEventListener('rotarydetent', function(event) {
             document.getElementById('RCCW').play()
             index = (index - 1 + aliens.length) % aliens.length;
         }
-        alienEl.setAttribute('src', `imgs/${aliens[index]}`)
+        alienEl.src = `imgs/${aliens[index].src}`
+        alienEl.style.scale = aliens[index].scale
     }
 });
 
@@ -77,7 +132,8 @@ function handleSwipe() {
         index = (index - 1 + aliens.length) % aliens.length;
     }
 
-    alienEl.setAttribute('src', `imgs/${aliens[index]}`)
+    alienEl.src = `imgs/${aliens[index].src}`
+    alienEl.style.scale = aliens[index].scale
 }
 
 // Eventos para mobile
