@@ -2,7 +2,13 @@ const aliens = [
     'swampfire.png',
     'bigchill.png',
     'humungousaur.png',
-    'alienx.png'
+    'alienx.png',
+    'heatblast.png',
+    'fourarms.png',
+    'diamondhead.png',
+    'jetray.png',
+    'waybig.png',
+    'chromastone.png'
 ]
 
 const alienEl = document.getElementById("aliens")
@@ -21,7 +27,6 @@ document.querySelector('.alien').addEventListener('click', function(event){
     document.querySelector('.des-lft').classList.add('deactive')
     document.querySelector('.des-rht').classList.add('deactive')
     document.querySelector('.hologram').style.display='block'
-    // document.querySelector('.alien').classList.add('active')
 })
 
 document.querySelector('.hologram').addEventListener('click', function(event){
@@ -32,7 +37,6 @@ document.querySelector('.hologram').addEventListener('click', function(event){
     document.querySelector('.des-lft').classList.remove('deactive')
     document.querySelector('.des-rht').classList.remove('deactive')
     document.querySelector('.hologram').style.display='none'
-    // document.querySelector('.alien').classList.remove('active')
 })
 
 document.addEventListener('rotarydetent', function(event) {
@@ -64,11 +68,11 @@ function handleSwipe() {
     let diffX = endX - startX;
     
     if (diffX > 50) {
-        // console.log("➡️ Swipe para a direita");
+        // console.log("Swipe para a direita");
         document.getElementById('RCCW').play()
         index = (index + 1) % aliens.length;
     } else if (diffX < -50) {
-        // console.log("⬅️ Swipe para a esquerda");
+        // console.log("Swipe para a esquerda");
         document.getElementById('RCCW').play()
         index = (index - 1 + aliens.length) % aliens.length;
     }
