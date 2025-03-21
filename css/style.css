@@ -102,10 +102,8 @@
 
 /* Imagem do alien */
 .alien img {
-  min-width: 130px;
-  max-width: 130px;
-  min-height: 270px;
-  max-height: 270px;
+  width: 130px;
+  height: 270px;
   object-fit: contain;
   display: none;
 }
