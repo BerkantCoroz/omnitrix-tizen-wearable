@@ -1,8 +1,8 @@
 const aliens = [
     'swampfire.png',
     'bigchill.png',
-    'humungousaur.webp',
-    'alienx.webp'
+    'humungousaur.png',
+    'alienx.png'
 ]
 
 const alienEl = document.getElementById("aliens")
@@ -14,23 +14,25 @@ let mode = 1;
 let index = 0;
 
 document.querySelector('.alien').addEventListener('click', function(event){
-    if (mode == 1){
-        alienEl.style.display = 'block'
-        mode = 2
-        document.getElementById('ox_activate').play()
-        document.getElementById('ox_activating').play()
-        document.querySelector('.des-lft').classList.add('deactive')
-        document.querySelector('.des-rht').classList.add('deactive')
-        document.querySelector('.alien').classList.add('active')
-    }else{
-        alienEl.style.display = 'none'
-        index = 0
-        mode = 1
-        document.getElementById('ox_transformation').play()
-        document.querySelector('.des-lft').classList.remove('deactive')
-        document.querySelector('.des-rht').classList.remove('deactive')
-        document.querySelector('.alien').classList.remove('active')
-    }
+    alienEl.style.display = 'block'
+    mode = 2
+    document.getElementById('ox_activate').play()
+    document.getElementById('ox_activating').play()
+    document.querySelector('.des-lft').classList.add('deactive')
+    document.querySelector('.des-rht').classList.add('deactive')
+    document.querySelector('.hologram').style.display='block'
+    // document.querySelector('.alien').classList.add('active')
+})
+
+document.querySelector('.hologram').addEventListener('click', function(event){
+    alienEl.style.display = 'none'
+    index = 0
+    mode = 1
+    document.getElementById('ox_transformation').play()
+    document.querySelector('.des-lft').classList.remove('deactive')
+    document.querySelector('.des-rht').classList.remove('deactive')
+    document.querySelector('.hologram').style.display='none'
+    // document.querySelector('.alien').classList.remove('active')
 })
 
 document.addEventListener('rotarydetent', function(event) {
