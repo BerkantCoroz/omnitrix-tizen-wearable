@@ -35,6 +35,126 @@ const aliens = [
         scale: 1.0
     },
     {
+        name: 'cannonbolt',
+        src: 'cannonbolt.png',
+        scale: 1.0
+    },
+    {
+        name: 'upgrade',
+        src: 'upgrade.png',
+        scale: 1.0
+    },
+    {
+        name: 'ripjaws',
+        src: 'ripjaws.png',
+        scale: 1.0
+    },
+    {
+        name: 'echoecho',
+        src: 'echoecho.png',
+        scale: 1.0
+    },
+    {
+        name: 'rath',
+        src: 'rath.png',
+        scale: 1.0
+    },
+    {
+        name: 'spidermonkey',
+        src: 'spidermonkey.png',
+        scale: 1.0
+    },
+    {
+        name: 'nrg',
+        src: 'nrg.png',
+        scale: 1.0
+    },
+    {
+        name: 'nanomech',
+        src: 'nanomech.png',
+        scale: 1.0
+    },
+    {
+        name: 'armadrillo',
+        src: 'armadrillo.png',
+        scale: 1.0
+    },
+    {
+        name: 'waterhazard',
+        src: 'waterhazard.png',
+        scale: 1.0
+    },
+    {
+        name: 'ampfibian',
+        src: 'ampfibian.png',
+        scale: 1.0
+    },
+    {
+        name: 'terraspin',
+        src: 'terraspin.png',
+        scale: 1.0
+    },
+    {
+        name: 'lodestar',
+        src: 'lodestar.png',
+        scale: 1.0
+    },
+    {
+        name: 'ghostfreak',
+        src: 'ghostfreak.png',
+        scale: 1.0
+    },
+    {
+        name: 'zsskayr',
+        src: 'zsskayr.png',
+        scale: 1.0
+    },
+    {
+        name: 'eatle',
+        src: 'eatle.png',
+        scale: 1.0
+    },
+    {
+        name: 'goop',
+        src: 'goop.png',
+        scale: 1.0
+    },
+    {
+        name: 'juryrigg',
+        src: 'juryrigg.png',
+        scale: 1.0
+    },
+    {
+        name: 'chamalien',
+        src: 'chamalien.png',
+        scale: 1.0
+    },
+    {
+        name: 'fasttrack',
+        src: 'fasttrack.png',
+        scale: 1.0
+    },
+    {
+        name: 'clockwork',
+        src: 'clockwork.png',
+        scale: 1.0
+    },
+    {
+        name: 'brainstorm',
+        src: 'brainstorm.png',
+        scale: 1.0
+    },
+    {
+        name: 'vomitman',
+        src: 'vomitman.png',
+        scale: 1.0
+    },
+    {
+        name: 'wildmutt',
+        src: 'wildmutt.png',
+        scale: 1.0
+    },
+    {
         name: 'jetray',
         src: 'jetray.png',
         scale: 1.3
