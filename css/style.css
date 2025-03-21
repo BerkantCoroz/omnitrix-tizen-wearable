@@ -60,7 +60,7 @@
 .des-lft,
 .des-rht {
   width: 125px;
-  height: 210px;
+  height: 230px;
   background-color: black;
   clip-path: polygon(100% 50%, 0 0, 0 100%);
   position: absolute;
@@ -78,13 +78,13 @@
 }
 
 .des-lft {
-  left: -25px;
+  left: -24px;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .des-rht {
-  right: -25px;
+  right: -24px;
   top: 50%;
   transform: translateY(-50%) rotate(180deg);
 }
@@ -102,8 +102,10 @@
 
 /* Imagem do alien */
 .alien img {
-  width: 130px;
-  height: 270px;
+  min-width: 130px;
+  max-width: 130px;
+  min-height: 270px;
+  max-height: 270px;
   object-fit: contain;
   display: none;
 }
