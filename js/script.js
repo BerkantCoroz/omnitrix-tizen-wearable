@@ -178,10 +178,10 @@ let index = 0;
 
 // Pré-carregar áudios para evitar atrasos
 const sounds = {
-    activate: new Audio("audio/activate.wav"),
-    activating: new Audio("audio/activating.wav"),
-    transformation: new Audio("audio/transformation.wav"),
-    rccw: new Audio("audio/dial_SFX/dial_sfx_5.wav"),
+    activate: new Audio("audio/activate.mp3"),
+    activating: new Audio("audio/activating.mp3"),
+    transformation: new Audio("audio/transformation.mp3"),
+    rccw: new Audio("audio/dial_sfx_5.mp3"),
 };
 
 // Forçar carregamento dos áudios
@@ -217,7 +217,6 @@ document.querySelector(".alien").addEventListener("click", function () {
 });
 
 document.querySelector(".hologram").addEventListener("click", function () {
-    index = 0;
     mode = 1;
     playSound("transformation");
     document.querySelector(".des-lft").classList.remove("des-lft-on");
