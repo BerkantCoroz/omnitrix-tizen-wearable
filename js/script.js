@@ -27,22 +27,22 @@ const aliens = [
     {
         name: 'fourarms',
         src: 'fourarms.png',
-        scale: 1.0
+        scale: 1.2
     },
     {
         name: 'diamondhead',
         src: 'diamondhead.png',
-        scale: 1.0
+        scale: 1.2
     },
     {
         name: 'cannonbolt',
         src: 'cannonbolt.png',
-        scale: 1.0
+        scale: 1.6
     },
     {
         name: 'upgrade',
         src: 'upgrade.png',
-        scale: 1.0
+        scale: 1.4
     },
     {
         name: 'ripjaws',
@@ -57,27 +57,27 @@ const aliens = [
     {
         name: 'rath',
         src: 'rath.png',
-        scale: 1.0
+        scale: 1.3
     },
     {
         name: 'spidermonkey',
         src: 'spidermonkey.png',
-        scale: 1.0
+        scale: 1.4
     },
     {
         name: 'nrg',
         src: 'nrg.png',
-        scale: 1.0
+        scale: 1.2
     },
     {
         name: 'nanomech',
         src: 'nanomech.png',
-        scale: 1.0
+        scale: 1.1
     },
     {
         name: 'armadrillo',
         src: 'armadrillo.png',
-        scale: 1.0
+        scale: 1.6
     },
     {
         name: 'waterhazard',
@@ -92,7 +92,7 @@ const aliens = [
     {
         name: 'terraspin',
         src: 'terraspin.png',
-        scale: 1.0
+        scale: 1.6
     },
     {
         name: 'lodestar',
@@ -102,32 +102,32 @@ const aliens = [
     {
         name: 'ghostfreak',
         src: 'ghostfreak.png',
-        scale: 1.0
+        scale: 0.9
     },
     {
         name: 'zsskayr',
         src: 'zsskayr.png',
-        scale: 1.0
+        scale: 1.5
     },
     {
         name: 'eatle',
         src: 'eatle.png',
-        scale: 1.0
+        scale: 1.2
     },
     {
         name: 'goop',
         src: 'goop.png',
-        scale: 1.0
+        scale: 1.1
     },
     {
         name: 'juryrigg',
         src: 'juryrigg.png',
-        scale: 1.0
+        scale: 1.1
     },
     {
         name: 'chamalien',
         src: 'chamalien.png',
-        scale: 1.0
+        scale: 1.1
     },
     {
         name: 'fasttrack',
@@ -137,12 +137,12 @@ const aliens = [
     {
         name: 'clockwork',
         src: 'clockwork.png',
-        scale: 1.0
+        scale: 1.5
     },
     {
         name: 'brainstorm',
         src: 'brainstorm.png',
-        scale: 1.0
+        scale: 1.7
     },
     {
         name: 'vomitman',
@@ -152,17 +152,17 @@ const aliens = [
     {
         name: 'wildmutt',
         src: 'wildmutt.png',
-        scale: 1.0
+        scale: 1.6
     },
     {
         name: 'jetray',
         src: 'jetray.png',
-        scale: 1.3
+        scale: 1.4
     },
     {
         name: 'waybig',
         src: 'waybig.png',
-        scale: 1.0
+        scale: 1.1
     },
     {
         name: 'chromastone',
