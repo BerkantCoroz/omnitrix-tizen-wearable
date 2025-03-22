@@ -63,7 +63,7 @@
   height: 240px;
   background-color: black;
   clip-path: polygon(100% 50%, 0 0, 0 100%);
-  position: absolute;
+  position: fixed;
   border-radius: 70% 0 0 70%;
 }
 
@@ -78,12 +78,12 @@
 }
 
 .des-lft {
-  left: -23px;
+  left: 1px;
   top: 50%;
   transform: translateY(-50%);
 }
 .des-lft-on {
-  animation: des-lft-on-animation 1s forwards;
+  animation: des-lft-on-animation 1.1s forwards;
 }
 
 .des-lft-off {
@@ -91,13 +91,13 @@
 }
 
 .des-rht {
-  right: -23px;
+  right: 1px;
   top: 50%;
   transform: translateY(-50%) rotate(180deg);
 }
 
 .des-rht-on {
-  animation: des-rht-on-animation 1s forwards;
+  animation: des-rht-on-animation 1.1s forwards;
 }
 
 .des-rht-off {
@@ -135,7 +135,7 @@
   height: 100%;
   background-color: var(--innerGreen);
   border-radius: 50%;
-  opacity: 0.7;
+  opacity: 0.65;
   animation: hologram-on-animation 1s;
 }
 
@@ -172,39 +172,41 @@
 /* Animate des-rht */
 @keyframes des-rht-on-animation {
   0% {
-    right: -23px;
+    right: 1px;
   }
   100% {
-    right: -200px;
+    right: -150px;
+    display: none;
   }
 }
 
 /* Animate des-rht */
 @keyframes des-rht-off-animation {
   0% {
-    right: -200px;
+    right: -150px;
   }
   100% {
-    right: -23px;
+    right: 1px;
   }
 }
 
 /* Animate des-lft */
 @keyframes des-lft-on-animation {
   0% {
-    left: -23px;
+    left: 1px;
   }
   100% {
-    left: -200px;
+    left: -150px;
+    display: none;
   }
 }
 
 /* Animate des-lft */
 @keyframes des-lft-off-animation {
   0% {
-    left: -200px;
+    left: -150px;
   }
   100% {
-    left: -23px;
+    left: 1px;
   }
 }

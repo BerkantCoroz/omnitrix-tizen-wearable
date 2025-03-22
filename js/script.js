@@ -170,72 +170,87 @@ const aliens = [
         scale: 1.0
     }
 ]
-
-const alienEl = document.getElementById("aliens")
-
-const dial = document.querySelector('.dial')
+const alienEl = document.getElementById("aliens");
+const dial = document.querySelector(".dial");
 
 let mode = 1;
-
 let index = 0;
 
-document.querySelector('.alien').addEventListener('click', function(event){
-    alienEl.style.display = 'block'
-    mode = 2
-    document.getElementById('ox_activate').play()
-    document.getElementById('ox_activating').play()
-    // document.querySelector('.des-lft').classList.add('deactive')
-    // document.querySelector('.des-rht').classList.add('deactive')
-    document.querySelector('.hologram').style.display='block'
-    document.querySelector('.des-lft').classList.remove('des-lft-off')
-    document.querySelector('.des-rht').classList.remove('des-rht-off')
-    document.querySelector('.des-lft').classList.add('des-lft-on')
-    document.querySelector('.des-rht').classList.add('des-rht-on')
-})
+// Pré-carregar áudios para evitar atrasos
+const sounds = {
+    activate: new Audio("audio/activate.wav"),
+    activating: new Audio("audio/activating.wav"),
+    transformation: new Audio("audio/transformation.wav"),
+    rccw: new Audio("audio/dial_SFX/dial_sfx_5.wav"),
+};
 
-document.querySelector('.hologram').addEventListener('click', function(event){
-    alienEl.style.display = 'none'
-    index = 0
-    mode = 1
-    document.getElementById('ox_transformation').play()
-    // document.querySelector('.des-lft').classList.remove('deactive')
-    // document.querySelector('.des-rht').classList.remove('deactive')
-    document.querySelector('.hologram').style.display='none'
-    document.querySelector('.des-lft').classList.remove('des-lft-on')
-    document.querySelector('.des-rht').classList.remove('des-rht-on')
-    document.querySelector('.des-lft').classList.add('des-lft-off')
-    document.querySelector('.des-rht').classList.add('des-rht-off')
-})
-
-document.addEventListener('keydown', function(event) {
-    if (mode == 2){
-        if (event.key === 'ArrowRight') {
-            document.getElementById('RCCW').play()
-            index = (index + 1) % aliens.length;
-        } else if (event.key === 'ArrowLeft') {
-            document.getElementById('RCCW').play()
-            index = (index - 1 + aliens.length) % aliens.length;
-        }
-        document.querySelector('.alien').classList.remove('alien-on')
-        alienEl.style.transform = `scale(${aliens[index].scale})`
-        alienEl.src = `imgs/${aliens[index].src}`
-        document.querySelector('.alien').classList.add('alien-on')
+// Forçar carregamento dos áudios
+document.addEventListener("DOMContentLoaded", function () {
+    for (let key in sounds) {
+        sounds[key].load();
     }
-})
+});
 
-document.addEventListener('rotarydetent', function(event) {
-    if (mode == 2){
-        if (event.detail.direction === 'CW') { 
-            document.getElementById('RCCW').play()
+function playSound(sound) {
+    if (sounds[sound]) {
+        const audioClone = sounds[sound].cloneNode(); // Evita interrupções
+        audioClone.volume = 1;
+        setTimeout(() => audioClone.play().catch(() => { }), 10); // Pequeno atraso para evitar bloqueios
+    }
+}
+
+document.querySelector(".alien").addEventListener("click", function () {
+    mode = 2;
+    playSound("activate");
+    setTimeout(() => playSound("activating"), 50); // Pequeno atraso entre os sons
+    document.querySelector(".des-lft").classList.remove("des-lft-off");
+    document.querySelector(".des-rht").classList.remove("des-rht-off");
+    document.querySelector(".des-lft").classList.add("des-lft-on");
+    document.querySelector(".des-rht").classList.add("des-rht-on");
+
+    setTimeout(function () {
+        document.querySelector(".hologram").style.display = "block";
+    }, 250);
+    setTimeout(function() {
+        alienEl.style.display = 'block';
+    }, 500);
+});
+
+document.querySelector(".hologram").addEventListener("click", function () {
+    index = 0;
+    mode = 1;
+    playSound("transformation");
+    document.querySelector(".des-lft").classList.remove("des-lft-on");
+    document.querySelector(".des-rht").classList.remove("des-rht-on");
+    document.querySelector(".des-lft").classList.add("des-lft-off");
+    document.querySelector(".des-rht").classList.add("des-rht-off");
+    alienEl.style.display = 'none';
+    document.querySelector(".hologram").style.display = "none";
+});
+
+document.addEventListener("keydown", function (event) {
+    if (mode == 2) {
+        if (event.key === "ArrowRight") {
+            playSound("rccw");
             index = (index + 1) % aliens.length;
-        } else if (event.detail.direction === 'CCW') {
-            document.getElementById('RCCW').play()
+        } else if (event.key === "ArrowLeft") {
+            playSound("rccw");
             index = (index - 1 + aliens.length) % aliens.length;
         }
-        document.querySelector('.alien').classList.remove('alien-on')
-        alienEl.style.transform = `scale(${aliens[index].scale})`
-        alienEl.src = `imgs/${aliens[index].src}`
-        document.querySelector('.alien').classList.add('alien-on')
+        updateAlien();
+    }
+});
+
+document.addEventListener("rotarydetent", function (event) {
+    if (mode == 2) {
+        if (event.detail.direction === "CW") {
+            playSound("rccw");
+            index = (index + 1) % aliens.length;
+        } else if (event.detail.direction === "CCW") {
+            playSound("rccw");
+            index = (index - 1 + aliens.length) % aliens.length;
+        }
+        updateAlien();
     }
 });
 
@@ -253,27 +268,23 @@ function endSwipe(e) {
 
 function handleSwipe() {
     let diffX = endX - startX;
-    
-    if (diffX > 50) {
-        // console.log("Swipe para a direita");
-        document.getElementById('RCCW').play()
-        index = (index + 1) % aliens.length;
-    } else if (diffX < -50) {
-        // console.log("Swipe para a esquerda");
-        document.getElementById('RCCW').play()
-        index = (index - 1 + aliens.length) % aliens.length;
+    if (Math.abs(diffX) > 50) {
+        let direction = diffX > 0 ? 1 : -1;
+        playSound("rccw");
+        index = (index + direction + aliens.length) % aliens.length;
+        requestAnimationFrame(updateAlien);
     }
-
-    document.querySelector('.alien').classList.remove('alien-on')
-    alienEl.style.transform = `scale(${aliens[index].scale})`
-    alienEl.src = `imgs/${aliens[index].src}`
-    document.querySelector('.alien').classList.add('alien-on')
 }
 
-// Eventos para mobile
-document.addEventListener("touchstart", startSwipe);
-document.addEventListener("touchend", endSwipe);
+function updateAlien() {
+    document.querySelector(".alien").classList.remove("alien-on");
+    alienEl.style.transform = `scale(${aliens[index].scale})`;
+    alienEl.src = `imgs/${aliens[index].src}`;
+    document.querySelector(".alien").classList.add("alien-on");
+}
 
-// Eventos para desktop
-document.addEventListener("mousedown", startSwipe);
-document.addEventListener("mouseup", endSwipe);
+// Eventos otimizados para melhor resposta
+const eventTypes = ["pointerdown", "pointerup"];
+eventTypes.forEach(event => {
+    document.addEventListener(event, event.includes("down") ? startSwipe : endSwipe);
+});
