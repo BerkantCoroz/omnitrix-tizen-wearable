@@ -83,7 +83,7 @@
   transform: translateY(-50%);
 }
 .des-lft-on {
-  animation: des-lft-on-animation 1.1s forwards;
+  animation: des-lft-on-animation 1s forwards;
 }
 
 .des-lft-off {
@@ -97,7 +97,7 @@
 }
 
 .des-rht-on {
-  animation: des-rht-on-animation 1.1s forwards;
+  animation: des-rht-on-animation 1s forwards;
 }
 
 .des-rht-off {
