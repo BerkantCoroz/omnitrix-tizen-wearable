@@ -208,8 +208,8 @@ document.addEventListener('keydown', function(event) {
             document.getElementById('RCCW').play()
             index = (index - 1 + aliens.length) % aliens.length;
         }
+        alienEl.style.transform = `scale(${aliens[index].scale})`
         alienEl.src = `imgs/${aliens[index].src}`
-        alienEl.style.scale = aliens[index].scale
     }
 })
 
@@ -222,8 +222,8 @@ document.addEventListener('rotarydetent', function(event) {
             document.getElementById('RCCW').play()
             index = (index - 1 + aliens.length) % aliens.length;
         }
+        alienEl.style.transform = `scale(${aliens[index].scale})`
         alienEl.src = `imgs/${aliens[index].src}`
-        alienEl.style.scale = aliens[index].scale
     }
 });
 
@@ -252,8 +252,8 @@ function handleSwipe() {
         index = (index - 1 + aliens.length) % aliens.length;
     }
 
+    alienEl.style.transform = `scale(${aliens[index].scale})`
     alienEl.src = `imgs/${aliens[index].src}`
-    alienEl.style.scale = aliens[index].scale
 }
 
 // Eventos para mobile
