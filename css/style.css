@@ -59,8 +59,8 @@
 /* Partes laterais */
 .des-lft,
 .des-rht {
-  width: 125px;
-  height: 230px;
+  width: 135px;
+  height: 240px;
   background-color: black;
   clip-path: polygon(100% 50%, 0 0, 0 100%);
   position: absolute;
@@ -78,15 +78,30 @@
 }
 
 .des-lft {
-  left: -24px;
+  left: -23px;
   top: 50%;
   transform: translateY(-50%);
 }
+.des-lft-on {
+  animation: des-lft-on-animation 1s forwards;
+}
+
+.des-lft-off {
+  animation: des-lft-off-animation 1s forwards;
+}
 
 .des-rht {
-  right: -24px;
+  right: -23px;
   top: 50%;
   transform: translateY(-50%) rotate(180deg);
+}
+
+.des-rht-on {
+  animation: des-rht-on-animation 1s forwards;
+}
+
+.des-rht-off {
+  animation: des-rht-off-animation 1s forwards; 
 }
 
 /* Alien no centro */
@@ -108,6 +123,10 @@
   display: none;
 }
 
+.alien-on {
+  animation: alien-on-animation 1s;
+}
+
 .hologram{
   display: none;
   z-index: 100;
@@ -117,4 +136,75 @@
   background-color: var(--innerGreen);
   border-radius: 50%;
   opacity: 0.7;
+  animation: hologram-on-animation 1s;
+}
+
+/* Animate alien */
+@keyframes alien-on-animation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Animate hologram */
+@keyframes hologram-on-animation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+
+/* Animate des-rht */
+@keyframes des-rht-on-animation {
+  0% {
+    right: -23px;
+  }
+  100% {
+    right: -200px;
+  }
+}
+
+/* Animate des-rht */
+@keyframes des-rht-off-animation {
+  0% {
+    right: -200px;
+  }
+  100% {
+    right: -23px;
+  }
+}
+
+/* Animate des-lft */
+@keyframes des-lft-on-animation {
+  0% {
+    left: -23px;
+  }
+  100% {
+    left: -200px;
+  }
+}
+
+/* Animate des-lft */
+@keyframes des-lft-off-animation {
+  0% {
+    left: -200px;
+  }
+  100% {
+    left: -23px;
+  }
 }

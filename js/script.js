@@ -184,9 +184,13 @@ document.querySelector('.alien').addEventListener('click', function(event){
     mode = 2
     document.getElementById('ox_activate').play()
     document.getElementById('ox_activating').play()
-    document.querySelector('.des-lft').classList.add('deactive')
-    document.querySelector('.des-rht').classList.add('deactive')
+    // document.querySelector('.des-lft').classList.add('deactive')
+    // document.querySelector('.des-rht').classList.add('deactive')
     document.querySelector('.hologram').style.display='block'
+    document.querySelector('.des-lft').classList.remove('des-lft-off')
+    document.querySelector('.des-rht').classList.remove('des-rht-off')
+    document.querySelector('.des-lft').classList.add('des-lft-on')
+    document.querySelector('.des-rht').classList.add('des-rht-on')
 })
 
 document.querySelector('.hologram').addEventListener('click', function(event){
@@ -194,9 +198,13 @@ document.querySelector('.hologram').addEventListener('click', function(event){
     index = 0
     mode = 1
     document.getElementById('ox_transformation').play()
-    document.querySelector('.des-lft').classList.remove('deactive')
-    document.querySelector('.des-rht').classList.remove('deactive')
+    // document.querySelector('.des-lft').classList.remove('deactive')
+    // document.querySelector('.des-rht').classList.remove('deactive')
     document.querySelector('.hologram').style.display='none'
+    document.querySelector('.des-lft').classList.remove('des-lft-on')
+    document.querySelector('.des-rht').classList.remove('des-rht-on')
+    document.querySelector('.des-lft').classList.add('des-lft-off')
+    document.querySelector('.des-rht').classList.add('des-rht-off')
 })
 
 document.addEventListener('keydown', function(event) {
@@ -208,8 +216,10 @@ document.addEventListener('keydown', function(event) {
             document.getElementById('RCCW').play()
             index = (index - 1 + aliens.length) % aliens.length;
         }
+        document.querySelector('.alien').classList.remove('alien-on')
         alienEl.style.transform = `scale(${aliens[index].scale})`
         alienEl.src = `imgs/${aliens[index].src}`
+        document.querySelector('.alien').classList.add('alien-on')
     }
 })
 
@@ -222,8 +232,10 @@ document.addEventListener('rotarydetent', function(event) {
             document.getElementById('RCCW').play()
             index = (index - 1 + aliens.length) % aliens.length;
         }
+        document.querySelector('.alien').classList.remove('alien-on')
         alienEl.style.transform = `scale(${aliens[index].scale})`
         alienEl.src = `imgs/${aliens[index].src}`
+        document.querySelector('.alien').classList.add('alien-on')
     }
 });
 
@@ -252,8 +264,10 @@ function handleSwipe() {
         index = (index - 1 + aliens.length) % aliens.length;
     }
 
+    document.querySelector('.alien').classList.remove('alien-on')
     alienEl.style.transform = `scale(${aliens[index].scale})`
     alienEl.src = `imgs/${aliens[index].src}`
+    document.querySelector('.alien').classList.add('alien-on')
 }
 
 // Eventos para mobile
