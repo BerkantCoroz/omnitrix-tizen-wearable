@@ -19,6 +19,7 @@ Este é um projeto que traz o icônico **Omnitrix** (Recalibrado) para o **Tizen
 
 ![Omnitrix Preview 1](screenshot1.png)
 ![Omnitrix Preview 2](screenshot2.png)
+![Omnitrix Demo](demo.gif)
 
 ## 📦 Instalação
 

@@ -258,11 +258,11 @@ let endX = 0;
 
 function startSwipe(e) {
     startX = e.touches ? e.touches[0].clientX : e.clientX;
+    handleSwipe();
 }
 
 function endSwipe(e) {
     endX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
-    handleSwipe();
 }
 
 function handleSwipe() {
@@ -276,14 +276,19 @@ function handleSwipe() {
 }
 
 function updateAlien() {
+    alienEl.style.display = "none";
     document.querySelector(".alien").classList.remove("alien-on");
-    alienEl.style.transform = `scale(${aliens[index].scale})`;
-    alienEl.src = `imgs/${aliens[index].src}`;
-    document.querySelector(".alien").classList.add("alien-on");
+    setTimeout(() => {
+        alienEl.src = `imgs/${aliens[index].src}`;
+        alienEl.style.transform = `scale(${aliens[index].scale})`;
+        alienEl.style.display = "block";
+        document.querySelector(".alien").classList.add("alien-on");
+    }, 50);
 }
 
+
 // Eventos otimizados para melhor resposta
-const eventTypes = ["pointerdown", "pointerup"];
+const eventTypes = ["touchstart", "touchend", "mousedown", "mouseup"];
 eventTypes.forEach(event => {
-    document.addEventListener(event, event.includes("down") ? startSwipe : endSwipe);
+    document.addEventListener(event, (event.includes("up") || event.includes('end')) ? startSwipe : endSwipe);
 });
