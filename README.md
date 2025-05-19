@@ -1,54 +1,71 @@
-# 🕒 Omnitrix para Tizen OS
+🕒 Omnitrix for Tizen OS
+This is a project that brings the iconic Omnitrix (Recalibrated) to Tizen OS, recreating its interface, animations, and interactions. Inspired by Ben 10’s watch, this project was developed to run on devices with Tizen 5.5, offering a unique experience.
 
-Este é um projeto que traz o icônico **Omnitrix** (Recalibrado) para o **Tizen OS**, recriando sua interface, animações e interações. Inspirado no relógio do Ben 10, este projeto foi desenvolvido para rodar em dispositivos com Tizen 5.5, proporcionando uma experiência única.
+🚀 Features
+Faithful design based on the original Omnitrix.
 
-## 🚀 Recursos
+Smooth animations and responsive interactions.
 
-- Design fiel ao Omnitrix original.
-- Animações suaves e interações responsivas.
-- Troca de aliens simulando a rotação do mostrador.
-- Compatível com dispositivos rodando **Tizen OS**.
+Alien selection simulating the dial rotation.
 
-## 🛠️ Tecnologias Utilizadas
+Compatible with devices running Tizen OS.
 
-- **HTML, CSS, JavaScript** → Estrutura e animação da interface.
-- **Tizen Studio** → Ambiente de desenvolvimento para Tizen OS.
-- **Canvas API & CSS Animations** → Para efeitos visuais interativos.
+🛠️ Technologies Used
+HTML, CSS, JavaScript → Interface structure and animations.
 
-## 📸 Preview
+Tizen Studio → Development environment for Tizen OS.
 
-![Omnitrix Preview 1](screenshot1.png)
-![Omnitrix Preview 2](screenshot2.png)
-![Omnitrix Demo](demo.gif)
+Canvas API & CSS Animations → For interactive visual effects.
 
-## 📦 Instalação
+📸 Preview
 
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/MrPowerUp82/omnitrix-tizen-wearable.git
-   ```
-2. Abra o **Tizen Studio** e importe o projeto.
-3. Compile e instale no seu dispositivo Tizen.
 
-## 🎮 Como Usar
 
-- **Gire o mostrador** (simulado por toque ou arrastar) para selecionar um alien.
-- **Pressione o botão** para confirmar a transformação.
-- **Experimente diferentes interações** e descubra efeitos ocultos!
 
-## 📌 Roadmap
+📦 Installation
+Clone this repository:
 
-- [ ] Adicionar efeitos sonoros.
-- [ ] Melhorar a responsividade para diferentes tamanhos de tela.
-- [ ] Implementar suporte para gestos personalizados.
+bash
+Kopyala
+Düzenle
+git clone https://github.com/MrPowerUp82/omnitrix-tizen-wearable.git
+Open Tizen Studio and import the project.
 
-## 🤝 Contribuindo
+Build and install it on your Tizen device.
 
-Sinta-se à vontade para abrir **issues** ou enviar **pull requests** com melhorias!
+🎮 How to Use
+Rotate the dial (simulated via swipe or drag) to select an alien.
 
-## 📜 Licença
+Press the button to confirm the transformation.
 
-Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+Try different interactions to discover hidden effects!
 
----
-**Desenvolvido por [MrPowerUp82](https://github.com/MrPowerUp82).** 👾
+🧪 Custom Combos & New Features in This Fork
+This fork introduces exciting new features and secret combos to enhance the Omnitrix experience even further:
+
+🔐 Custom Combos – Hidden Modes
+Unlock secret functions by entering specific swipe sequences:
+
+Self Destroy: Right → Right → Left → Left → Right → Left
+
+Master Control: Left → Left → Right → Right → Left → Right
+
+Yellow Mode: Right → Right → Left → Left → Left
+
+Albedo Mode: Left → Left → Left → Right → Right
+
+Omnitrix Out: Left → Right → Left → Right → Left → Left
+
+RepairDNA: Right → Left → Right → Left → Right → Right
+
+🆕 New Features Added in This Fork
+🌀 Ultimate Transformation Mode
+Activate a more powerful alien form with unique visual effects!
+
+⚡ New Transformation Animations
+Enhanced transformation sequences for a more dynamic experience.
+
+🔊 Custom Sound Effects
+Brand-new sound effects for selection, activation, and special modes.
+
+🔧 These new features were added by github.com/BerkantCoroz
