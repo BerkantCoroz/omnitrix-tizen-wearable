@@ -5,7 +5,7 @@
 }
 :root {
 --grey: #686f69;
---innerGreen: #1cd947;
+--innerGreen: #7CFC00;
 --darkGreen: #0e5e18;
 --back: #08330f;
 }
@@ -38,7 +38,7 @@
 .dial {
   width: 360px;
   height: 360px;
-  background-color: var(--innerGreen);
+  background-color: #7CFC00;
   border-radius: 50%;
   position: absolute;
   box-shadow: inset 4px 4px 15px 3px rgba(0,0,0,0.75);
@@ -52,15 +52,15 @@
   height: 312px;
   border-radius: 50%;
   position: absolute;
-  background-color: var(--innerGreen);
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  background-color: #7CFC00;
+  box-shadow: 0 0 10px rgba(124, 252, 0, 0.8);
 }
 
 /* Partes laterais */
 .des-lft,
 .des-rht {
   width: 135px;
-  height: 240px;
+  height: 360px;
   background-color: black;
   clip-path: polygon(100% 50%, 0 0, 0 100%);
   position: fixed;
@@ -68,7 +68,7 @@
 }
 
 .active{
-  background-color: var(--darkGreen);
+  background-color: #0e5e18;
   border-radius: 50%;
   opacity: 0.5;
 }
@@ -113,30 +113,98 @@
   align-items: center;
   justify-content: center;
   z-index: 50;
+  overflow: hidden;
 }
 
 /* Imagem do alien */
 .alien img {
-  width: 130px;
-  height: 270px;
+  width: 150px;
+  height: 250px;
   object-fit: contain;
   display: none;
+  filter: drop-shadow(0 0 15px #7CFC00);
+  transform-origin: center;
+  animation: alien-appear 1s forwards, alien-glow 2s infinite alternate;
 }
 
 .alien-on {
   animation: alien-on-animation 1s;
 }
 
-.hologram{
+.hologram {
   display: none;
   z-index: 100;
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: var(--innerGreen);
+  background: radial-gradient(circle, 
+    rgba(124, 252, 0, 0.8) 0%,
+    rgba(124, 252, 0, 0.4) 30%,
+    rgba(124, 252, 0, 0.2) 50%,
+    transparent 70%
+  );
   border-radius: 50%;
-  opacity: 0.65;
+  opacity: 0.85;
   animation: hologram-on-animation 1s;
+  box-shadow: 0 0 20px #7CFC00;
+}
+
+.hologram::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('../imgs/omnitrix-logo.png');
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  filter: blur(3px);
+  animation: logo-pulse 3s infinite alternate;
+}
+
+.hologram.fullscreen {
+  background: #7CFC00;
+  cursor: pointer;
+}
+
+.hologram.fullscreen::before {
+  background-size: 100%;
+  opacity: 0.9;
+  filter: blur(0);
+  animation: none;
+  transition: all 0.3s ease;
+}
+
+.hologram.fullscreen:hover::before {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.hologram.fullscreen .alien {
+  display: none;
+}
+
+.hologram.ultimatrix {
+  background: #7CFC00;
+  animation: ultimatrix-appear 0.5s forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hologram.ultimatrix::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('../imgs/ultimatrix.png');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  filter: none;
+  animation: ultimatrix-logo-appear 0.5s forwards;
 }
 
 /* Animate alien */
@@ -155,19 +223,18 @@
 /* Animate hologram */
 @keyframes hologram-on-animation {
   0% {
-    transform: scale(1);
-    opacity: 1;
+    transform: scale(0.8);
+    opacity: 0;
   }
   50% {
     transform: scale(1.1);
-    opacity: 0.85;
+    opacity: 0.9;
   }
   100% {
     transform: scale(1);
-    opacity: 0.7;
+    opacity: 0.85;
   }
 }
-
 
 /* Animate des-rht */
 @keyframes des-rht-on-animation {
@@ -208,5 +275,683 @@
   }
   100% {
     left: 1px;
+  }
+}
+
+@keyframes logo-pulse {
+  from {
+    opacity: 0.1;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 0.2;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes alien-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes alien-glow {
+  from {
+    filter: drop-shadow(0 0 10px #7CFC00);
+  }
+  to {
+    filter: drop-shadow(0 0 20px #7CFC00);
+  }
+}
+
+@keyframes ultimatrix-appear {
+  0% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
+
+@keyframes ultimatrix-logo-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.self-destruct {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 360px;
+  background: black;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.self-destruct.active {
+  display: flex;
+}
+
+.self-destruct img {
+  width: 720px;
+  height: 720px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+}
+
+.self-destruct.active img {
+  animation: destruct-fade 0.1s linear;
+}
+
+.self-destruct.explosion {
+  animation: green-explosion 3s forwards;
+}
+
+@keyframes destruct-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes green-explosion {
+  0% {
+    background: black;
+  }
+  20% {
+    background: #7CFC00;
+    opacity: 1;
+  }
+  80% {
+    background: #7CFC00;
+    opacity: 1;
+  }
+  100% {
+    background: #7CFC00;
+    opacity: 0;
+  }
+}
+
+.master-control {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.master-control.active {
+  display: flex;
+}
+
+.master-control::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #7CFC00 0%, transparent 70%);
+  animation: master-control-pulse 2s infinite;
+}
+
+@keyframes master-control-pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+}
+
+.hourglass {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  animation: hourglass-rotate 2s linear infinite;
+}
+
+.hourglass::before,
+.hourglass::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  filter: drop-shadow(0 0 10px #7CFC00);
+}
+
+.hourglass::before {
+  top: 0;
+  border-top: 60px solid #7CFC00;
+}
+
+.hourglass::after {
+  bottom: 0;
+  border-bottom: 60px solid #7CFC00;
+  transform: rotate(180deg);
+}
+
+.hourglass::after {
+  animation: hourglass-glow 2s infinite alternate;
+}
+
+.square {
+  width: 120px;
+  height: 120px;
+  background: #7CFC00;
+  position: absolute;
+  opacity: 0;
+  transform: scale(2);
+  filter: drop-shadow(0 0 15px #7CFC00);
+  animation: square-transform 3s forwards;
+}
+
+.glow {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #7CFC00 0%, transparent 70%);
+  position: absolute;
+  opacity: 0;
+  animation: glow-effect 1s forwards 3s;
+}
+
+@keyframes hourglass-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hourglass-glow {
+  0% {
+    filter: drop-shadow(0 0 5px #7CFC00);
+  }
+  100% {
+    filter: drop-shadow(0 0 20px #7CFC00);
+  }
+}
+
+@keyframes square-transform {
+  0% {
+    opacity: 0;
+    transform: scale(2);
+  }
+  30% {
+    opacity: 0;
+    transform: scale(2);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  85% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.master-control.active .hourglass {
+  animation: hourglass-rotate 2s linear infinite;
+}
+
+.master-control.active .square {
+  animation: square-transform 3s forwards;
+}
+
+@keyframes glow-effect {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.yellow-mode {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 360px;
+  background: black;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.yellow-mode.active {
+  display: flex;
+  animation: yellow-pulse 1s infinite;
+}
+
+.yellow-mode.active ~ * {
+  display: none;
+}
+
+.yellow-mode img {
+  width: 720px;
+  height: 720px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: yellow-pulse 1s infinite alternate, yellow-rotate 8s linear;
+  filter: brightness(1.5) drop-shadow(0 0 20px #FFD700);
+}
+
+@keyframes yellow-pulse {
+  from {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(0.9);
+    filter: brightness(1.5) drop-shadow(0 0 20px #FFD700);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+    filter: brightness(2) drop-shadow(0 0 30px #FFD700);
+  }
+}
+
+@keyframes yellow-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Albedo Mode Styles */
+.albedo-mode {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.albedo-mode img {
+  width: 720px;
+  height: 720px;
+  filter: brightness(1.5) drop-shadow(0 0 20px #C91818);
+  animation: albedo-pulse 1s infinite;
+}
+
+@keyframes albedo-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+    filter: brightness(1.5) drop-shadow(0 0 20px #C91818);
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+    filter: brightness(2) drop-shadow(0 0 30px #C91818);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+    filter: brightness(1.5) drop-shadow(0 0 20px #C91818);
+  }
+}
+
+/* Albedo Mode Active Styles */
+.albedo-mode.active {
+  display: flex;
+}
+
+/* Albedo Mode Color Changes */
+.albedo-active .dial {
+  background-color: #C91818 !important;
+  box-shadow: 0 0 20px #C91818 !important;
+}
+
+.albedo-active .ring {
+  background-color: #C91818 !important;
+  box-shadow: 0 0 20px #C91818 !important;
+}
+
+.albedo-active .des-lft,
+.albedo-active .des-rht {
+  background-color: black !important;
+  box-shadow: none !important;
+}
+
+.albedo-active .alien img {
+  filter: hue-rotate(120deg) brightness(1.2) saturate(1.5) !important;
+}
+
+.albedo-active .hologram {
+  background: radial-gradient(circle, 
+    rgba(201, 24, 24, 0.8) 0%,
+    rgba(201, 24, 24, 0.4) 30%,
+    rgba(201, 24, 24, 0.2) 50%,
+    transparent 70%
+  ) !important;
+  box-shadow: 0 0 20px #C91818 !important;
+}
+
+.albedo-active .hologram::before {
+  background-image: url('../imgs/albedomni.png') !important;
+}
+
+.albedo-active .hologram.fullscreen {
+  background: #C91818 !important;
+}
+
+.albedo-active .hologram.ultimatrix {
+  background: #C91818 !important;
+}
+
+.albedo-active .hologram.ultimatrix::before {
+  background-image: url('../imgs/albedoUlti.png') !important;
+}
+
+.albedo-active .hourglass::before {
+  border-top: 60px solid #C91818 !important;
+  filter: drop-shadow(0 0 10px #C91818) !important;
+}
+
+.albedo-active .hourglass::after {
+  border-bottom: 60px solid #C91818 !important;
+  filter: drop-shadow(0 0 10px #C91818) !important;
+}
+
+.albedo-active .square {
+  background: #C91818 !important;
+  filter: drop-shadow(0 0 15px #C91818) !important;
+}
+
+.albedo-active .glow {
+  background: radial-gradient(circle, #C91818 0%, transparent 70%) !important;
+}
+
+/* Omnitrix Out Mode Styles */
+.omnitrix-out {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 360px;
+  background: black;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.omnitrix-out.active {
+  display: flex;
+}
+
+.omnitrix-out img {
+  width: 360px;
+  height: 360px;
+  position: absolute;
+  animation: omnitrix-out-pulse 1s infinite alternate;
+  filter: brightness(1.5) drop-shadow(0 0 20px #7CFC00);
+}
+
+@keyframes omnitrix-out-pulse {
+  from {
+    opacity: 0.5;
+    transform: scale(0.95);
+    filter: brightness(1.5) drop-shadow(0 0 20px #7CFC00);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes omnitrix-out-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.omnitrix-out.rotate img {
+  animation: omnitrix-out-rotate 2s linear infinite;
+}
+
+.repairdna-mode {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  transition: all 0.5s ease;
+}
+
+.repairdna-mode.closing {
+  animation: repairdna-close 1s forwards;
+}
+
+.repairdna-mode::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('../imgs/omnitrix-logo.png');
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  filter: blur(2px) brightness(1.5);
+  animation: repair-logo-pulse 2s infinite alternate;
+  transition: all 0.5s ease;
+}
+
+.repairdna-mode.closing::before {
+  animation: repair-logo-close 1s forwards;
+}
+
+.repairdna-mode.active {
+  display: block;
+  animation: repairdna-appear 0.5s forwards;
+}
+
+.repair-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, 
+    rgba(124, 252, 0, 0.9) 0%,
+    rgba(124, 252, 0, 0.6) 30%,
+    rgba(124, 252, 0, 0.3) 50%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: repair-pulse 5s infinite;
+  box-shadow: 0 0 50px #7CFC00;
+  transition: all 0.5s ease;
+}
+
+.repairdna-mode.closing .repair-pulse {
+  animation: repair-pulse-close 1s forwards;
+}
+
+.repair-flash {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #7CFC00;
+  border-radius: 50%;
+  opacity: 0;
+  animation: repair-flash 10s infinite;
+  box-shadow: 0 0 100px #7CFC00;
+  transition: all 0.5s ease;
+}
+
+.repairdna-mode.closing .repair-flash {
+  animation: repair-flash-close 1s forwards;
+}
+
+@keyframes repair-logo-pulse {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.95);
+    filter: blur(2px) brightness(1.5) drop-shadow(0 0 10px #7CFC00);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(1.05);
+    filter: blur(2px) brightness(2) drop-shadow(0 0 20px #7CFC00);
+  }
+}
+
+@keyframes repair-logo-close {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+    filter: blur(2px) brightness(1.5) drop-shadow(0 0 20px #7CFC00);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+    filter: blur(1px) brightness(2) drop-shadow(0 0 30px #7CFC00);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+    filter: blur(3px) brightness(1) drop-shadow(0 0 0px #7CFC00);
+  }
+}
+
+@keyframes repairdna-close {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes repair-pulse-close {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+    box-shadow: 0 0 70px #7CFC00;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.4;
+    box-shadow: 0 0 100px #7CFC00;
+  }
+  100% {
+    transform: scale(0.7);
+    opacity: 0;
+    box-shadow: 0 0 0px #7CFC00;
+  }
+}
+
+@keyframes repair-flash-close {
+  0% {
+    opacity: 0.9;
+    transform: scale(1.1);
+    box-shadow: 0 0 150px #7CFC00;
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3);
+    box-shadow: 0 0 200px #7CFC00;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.7);
+    box-shadow: 0 0 0px #7CFC00;
+  }
+}
+
+@keyframes repairdna-appear {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
